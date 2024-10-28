@@ -1,104 +1,95 @@
-# FAVAE Anomaly Detection and Localization
+# Feature-Augmented VAE for Anomaly Detection and Localization
 
-This repository contains the implementation of Feature Augmented Variational Auto Encoder (FAVAE) for anomaly detection and localization. The FAVAE model leverages the power of variational autoencoders with enhanced feature augmentations to detect and localize anomalies in images.
+This project implements a **Feature-Augmented Variational Autoencoder (VAE)** for anomaly detection and localization. It is designed for applications where detecting and highlighting anomalous regions is essential, such as quality control in manufacturing or medical imaging.
 
 ## Table of Contents
-- [Introduction](#introduction)
+- [About](#about)
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-  - [Training](#training)
-  - [Testing](#testing)
-- [Directory Structure](#directory-structure)
-- [Datasets](#datasets)
+- [Project Structure](#project-structure)
 - [Results](#results)
 - [Contributing](#contributing)
-- [License](#license)
 
-## Introduction
 
-Anomaly detection and localization is crucial in various domains, such as industrial inspection, medical imaging, and security. This project utilizes a Variational Auto Encoder (VAE) architecture augmented with additional features to improve the performance of anomaly detection and localization.
+## About
+This repository contains code for training and evaluating a feature-augmented VAE model designed to:
+- Detect anomalies in datasets.
+- Localize the specific regions of interest where anomalies are found.
+- Use data preprocessing, feature augmentation, and visualization techniques to improve anomaly detection performance.
+
+The VAE model is enhanced with additional feature layers to capture nuanced patterns within data, making it well-suited for applications in automated defect detection and other anomaly-sensitive domains.
 
 ## Features
-
-- Variational Auto Encoder with feature augmentations
-- Anomaly detection and localization
-- Support for MVTec Anomaly Detection dataset
-- Easy to use training and testing scripts
+- **VAE Model** with customized augmentation layers for enhanced feature extraction.
+- **Preprocessing Pipeline** to prepare datasets for training and testing.
+- **Anomaly Detection and Localization** using learned representations.
+- **Visualization Tools** to display detected anomalies and localized regions.
+- **Customizable Dataset** module for integrating different types of datasets.
 
 ## Installation
 
-Clone this repository and install the required dependencies:
+Clone this repository and install the required dependencies.
 
 ```bash
-git clone https://github.com/Kidus-Bellete/VAE.git
-cd VAE
+git clone https://github.com/AbelAbeb/Feature_Augmented_VAE_Anomaly_detection_and_localization.git
+cd Feature_Augmented_VAE_Anomaly_detection_and_localization
 pip install -r requirements.txt
 ```
 
 ## Usage
 
-### Training
+1. **Prepare the Dataset**:
+   Place your dataset images in the designated `datasets` directory, or modify `datasets/mvtec.py` to load custom datasets.
 
-To train the FAVAE model, run:
+2. **Train the Model**:
+   To train the model, run:
+   ```bash
+   python train.py
+   ```
+   Customize training parameters in the `train.py` script as needed.
 
-```bash
-python train.py --obj bottle --do_aug
-```
+3. **Test the Model**:
+   To evaluate the model and visualize results, use:
+   ```bash
+   python test.py
+   ```
 
-You can adjust the training parameters in the `train.py` script.
-
-### Testing
-
-To test the trained FAVAE model, run:
-
-```bash
-python test.py
-```
-
-Results will be saved in the `results` directory.
-
-## Directory Structure
+## Project Structure
 
 ```
-FAVAE_Anomaly_Detection_And_Localization/
-├── datasets/
-│   ├── mvtec.py           # MVTec dataset loader
-│   └── preprocessing.py   # Data preprocessing script
-├── imgs/                  # Sample images for reference
-├── results/               # the output images 
-├── train_patches/         # MVTec dataset 600000 images 
-│   ├── 2.png
-│   ├── 3.png
-│   └── pic1.jpg
-├── models/
-│   ├── VAE.py             # VAE model definition
+Feature_Augmented_VAE_Anomaly_detection_and_localization/
+├── datasets/               # Data loading and preprocessing scripts
+│   ├── mvtec.py
+│   └── preprocessing.py
+├── imgs/                   # Example images and visualization outputs
+├── models/                 # Model architecture and initialization files
+│   ├── VAE.py
 │   └── __init__.py
-├── func.py                # Helper functions
-├── test.py                # Testing script
-├── train.py               # Training script
-└── utils.py               # Utility functions
+├── utils.py                # Utility functions for training, evaluation, etc.
+├── func.py                 # Core functions and helper methods
+├── train.py                # Training script
+├── test.py                 # Testing and evaluation script
+└── requirements.txt        # Python dependencies
 ```
-
-## Datasets
-
-The `datasets` directory contains scripts for loading and preprocessing datasets. The primary dataset used is the MVTec Anomaly Detection dataset. Download the dataset from the official website and place it in the appropriate directory `train_patches` folder.
 
 ## Results
 
-The results of anomaly detection and localization will be saved in the `results` directory. This includes:
+### Sample Outputs
+Here are some examples of the outputs produced by the model:
 
-- Original test images
-- Reconstructed images
-- Pixel-wise anomaly score maps
-- Thresholded anomaly localization maps
-- ROC curves and AUC scores for anomaly detection performance
+![Sample Output 1](imgs/2.png)
+*Example of an anomaly detected in an image.*
 
-These outputs allow for both quantitative evaluation of the model's performance and qualitative assessment of its anomaly localization capabilities.
+![Sample Output 2](imgs/6.png)
+*Another example of a localized anomaly.*
+
+### Model Architecture
+The architecture of the feature-augmented VAE is as follows:
+
+![Model Architecture](imgs/pic1.png)
+*Visualization of the VAE model architecture.*
 
 ## Contributing
-
-We welcome contributions! Please open an issue or submit a pull request for any improvements or bug fixes.
-
-## License
+Contributions are welcome! Please fork the repository, create a new branch, and submit a pull request with your changes.
 
