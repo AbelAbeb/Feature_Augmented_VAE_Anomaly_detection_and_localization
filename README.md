@@ -87,7 +87,7 @@ Here are some examples of the outputs produced by the model:
 ### Model Architecture
 The architecture of the feature-augmented VAE is as follows:
 
-![Model Architecture](imgs/pic1.png)
+![Model Architecture](imgs/pic1.jpg)
 *Visualization of the VAE model architecture.*
 
 ## Contributing
